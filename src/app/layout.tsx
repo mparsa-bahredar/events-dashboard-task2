@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" dir="ltr">
+    <html className="bg-[#F5F5F5]   dark:bg-gray-900">
       <body className={`${vazirmatn.className} antialiased min-h-screen`}>
         {children} 
       </body>

@@ -1,17 +1,24 @@
-import Link from 'next/link'
-import React from 'react'
+import { cookies } from 'next/headers'
+import DashboardHeaderClient from './DashboardHeaderClient'
 
-const DashboardHeader = () => {
+
+export default async function DashboardHeader(){
+
+  const cookieStore = await cookies()
+  const token = cookieStore.get('token')?.value
+  const isLoggedIn = !!token
+
+  async function logoutAction() {
+    "use server"
+    const cookieStore = await cookies()
+    cookieStore.delete('token')
+  }
+
 
   return (
     <header className='py-4 px-8'>
-      <div className='flex justify-start gap-4 py-4 px-8 bg-[#FFFFFF] rounded-xl'>
-        <Link href={'/'} className='font-medium text-base text-[#A3A3A3]   hover:text-[#404040] active:text-[#404040]'>
-          Home
-        </Link>
-      </div>
+      <DashboardHeaderClient isLoggedIn={isLoggedIn} logoutAction={logoutAction}/>
     </header>
   )
 }
 
-export default DashboardHeader

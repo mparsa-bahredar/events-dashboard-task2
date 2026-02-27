@@ -1,6 +1,6 @@
 import React from 'react'
 import EventCard from '../(public)/events/EventCard';
-import { getEvents } from '@/utils/hooks/getEvents';
+import { getEvents } from '@/utils/hooks/getEvents/getEvents';
 
 export default async function Dashboard(){
 
